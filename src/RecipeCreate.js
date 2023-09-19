@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function RecipeCreate({ setRecipes }) {
+function RecipeCreate({ recipes, setRecipes }) {
 
   // TODO: When the form is submitted, a new recipe should be created, and the form contents cleared.
   // done TODO: Add the required input and textarea form elements.
@@ -14,7 +14,7 @@ function RecipeCreate({ setRecipes }) {
   };
 
 
-  //instead of formData, setRecipes to add to recipes
+  // everytime something in target chanages, updates the FormData
   const [formData, setFormData] = useState({ ...initialForm });
   const handleChange = ({ target }) => {
     setFormData({
@@ -23,9 +23,19 @@ function RecipeCreate({ setRecipes }) {
     });
   };
 
+
+  // when hitting submit
+  // resets formData to initialForm
+  // ---------> NOT WORKING <-----------
+  // add new recipe from formData to recipes/RecipeData
+  //  - RecipeData is an array of objects
+  //  - current qualified error says its not receiving an HTML element
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    setRecipes({...recipes, formData});
     setFormData({ ...initialForm });
+    console.log(recipes);
   };
   
   return (

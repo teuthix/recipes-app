@@ -11,6 +11,8 @@ label {
 
 header {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 64px;
 }
 
 /* typography */
@@ -55,6 +57,22 @@ table {
 }
 
 /* Column Size for thead */
+th {
+  width: 10%;
+}
+
+th.area {
+  width: 30%;
+}
 
 
 /* Column size for tbody */
+tbody:nth-child(odd) {
+  background-color: #fff0c7;
+}
+
+td img {
+  object-fit: scale-down;
+  height: 100%;
+  width: 100%;
+}

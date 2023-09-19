@@ -1,4 +1,5 @@
 import React from "react";
+//import RecipeData from "./RecipeData"
 
 function RecipeList({ recipes, setRecipes }) {
   
@@ -7,12 +8,13 @@ function RecipeList({ recipes, setRecipes }) {
   // done TODO: Each recipe row must have a delete button - <button name="delete">Delete</button> - that deletes the post when clicked
 
 
-
+  // deletes the recipe by filtering out the recipe to be deleted by its index
   const deleteRecipe = (indexToDelete) => {
     setRecipes((currentRecipes) => 
     currentRecipes.filter((recipe, index) => index !== indexToDelete));
   }
 
+  //html for each recipe
   const eachRecipe = recipes.map((recipe, index) => {
     return (
       <tr key={index}>
@@ -24,8 +26,8 @@ function RecipeList({ recipes, setRecipes }) {
             alt={recipe.name}
           />
         </td>
-        <td>{recipe.ingredients}</td>
-        <td>{recipe.preparation}</td>
+        <td className="content_td"><p>{(recipe.ingredients)}</p></td>
+        <td className="content_td"><p>{recipe.preparation}</p></td>
         <td>
           <button name="delete" onClick={() => deleteRecipe(index)}>Delete</button>
         </td>
@@ -33,7 +35,9 @@ function RecipeList({ recipes, setRecipes }) {
     )
   });
 
-
+  // what comes out of RecipeList
+  // table header and each recipe from recipes(RecipeData)
+  
   return (
     <div className="recipe-list">
       <table>
@@ -42,15 +46,13 @@ function RecipeList({ recipes, setRecipes }) {
             <th>Name</th>
             <th>Cuisine</th>
             <th>Photo</th>
-            <th>Ingredients</th>
-            <th>Preparation</th>
+            <th className="area">Ingredients</th>
+            <th className="area">Preparation</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          
             {eachRecipe}
-          
         </tbody>
       </table>
     </div>
