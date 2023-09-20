@@ -26,16 +26,13 @@ function RecipeCreate({ recipes, setRecipes }) {
 
   // when hitting submit
   // resets formData to initialForm
-  // ---------> NOT WORKING <-----------
-  // add new recipe from formData to recipes/RecipeData
-  //  - RecipeData is an array of objects
-  //  - current qualified error says its not receiving an HTML element
+  // fixed issue: setRecipes was an object not an array
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setRecipes({...recipes, formData});
+    setRecipes([...recipes, formData]);
     setFormData({ ...initialForm });
-    console.log(recipes);
+    // console.log(recipes);
   };
   
   return (
@@ -48,6 +45,7 @@ function RecipeCreate({ recipes, setRecipes }) {
                 id="name"
                 type="text"
                 name="name"
+                placeholder="Name"
                 onChange={handleChange}
                 value={formData.name}
               />
@@ -57,6 +55,7 @@ function RecipeCreate({ recipes, setRecipes }) {
                 id="cuisine"
                 type="text"
                 name="cuisine"
+                placeholder="Cuisine"
                 onChange={handleChange}
                 value={formData.cuisine}
               />
@@ -66,22 +65,25 @@ function RecipeCreate({ recipes, setRecipes }) {
                 id="photo"
                 type="url"
                 name="photo"
+                placeholder="URL"
                 onChange={handleChange}
                 value={formData.photo}
               />
             </td>
-            <td>
+            <td className="area">
               <textarea
                 id="ingredients"
                 name="ingredients"
+                placeholder="Ingredients"
                 onChange={handleChange}
                 value={formData.ingredients}
               />
             </td>
-            <td>
+            <td className="area">
               <textarea
                 id="preparation"
                 name="preparation"
+                placeholder="Preparation"
                 onChange={handleChange}
                 value={formData.preparation}
               />

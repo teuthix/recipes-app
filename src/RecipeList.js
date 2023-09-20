@@ -15,6 +15,7 @@ function RecipeList({ recipes, setRecipes }) {
   }
 
   //html for each recipe
+  console.log(recipes, 123);
   const eachRecipe = recipes.map((recipe, index) => {
     return (
       <tr key={index}>
