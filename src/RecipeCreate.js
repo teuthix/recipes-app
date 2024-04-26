@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 
 function RecipeCreate({ recipes, setRecipes }) {
-
-  // TODO: When the form is submitted, a new recipe should be created, and the form contents cleared.
-  // done TODO: Add the required input and textarea form elements.
-  // done TODO: Add the required submit and change handlers
   const initialForm = {
     name: "",
     cuisine: "",
@@ -12,10 +8,9 @@ function RecipeCreate({ recipes, setRecipes }) {
     ingredients: "",
     preparation: "",
   };
-
-
-  // everytime something in target chanages, updates the FormData
   const [formData, setFormData] = useState({ ...initialForm });
+
+  // everytime something in target changes, updates the FormData
   const handleChange = ({ target }) => {
     setFormData({
       ...formData,
@@ -23,18 +18,15 @@ function RecipeCreate({ recipes, setRecipes }) {
     });
   };
 
-
   // when hitting submit
   // resets formData to initialForm
   // fixed issue: setRecipes was an object not an array
-
   const handleSubmit = (event) => {
     event.preventDefault();
     setRecipes([...recipes, formData]);
     setFormData({ ...initialForm });
-    // console.log(recipes);
   };
-  
+
   return (
     <form name="create" onSubmit={handleSubmit}>
       <table>
